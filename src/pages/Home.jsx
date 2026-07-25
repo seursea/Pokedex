@@ -8,7 +8,7 @@ export default function Home() {
     const [searchTerm, setSearchTerm] = useState('');
     const [sortBy, setSortBy] = useState('id');
 
-    // 1. Fetching all Pokemon (Unchanged)
+    // Fetch Pokemons 
     useEffect(() => {
         const fetchAll = async () => {
             try {
@@ -75,16 +75,16 @@ export default function Home() {
     }, []); 
 
     return(
-        <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-4 mb-8 justify-between">
+        <div className="bg-[#242424] max-w-6xl mx-auto">
+            <div className="sticky top-0 left-0 right-0 z-50 pt-10 pb-3 bg-[#242424] flex flex-col md:flex-row gap-4 mb-8 justify-between">
                 <input 
                     type="text"
                     placeholder="Search by Name or ID"
-                    className="p-2 border rounded shadow-sm flex-1"
+                    className="p-2 border border-[#08ac94] rounded shadow-sm flex-1 text-[#08ac94] focus:outline-2"
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <select
-                    className="p-2 border rounded shadow-sm"
+                    className="p-2 border border-[#08ac94] rounded shadow-sm text-[#08ac94] focus:outline-2"
                     onChange={(e) => setSortBy(e.target.value)}
                 >
                     <option value="id">ID</option>
@@ -92,7 +92,7 @@ export default function Home() {
                 </select>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
                 {visibleDetails.map(pokemon => (
                     <PokemonCard key={pokemon.id} pokemon={pokemon} />
                 ))}
