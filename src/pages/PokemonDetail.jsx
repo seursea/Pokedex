@@ -71,14 +71,14 @@ export default function PokemonDetail() {
 
             <div className="flex justify-between mt-8 pt-8 border-t border-[#08ac94]">
                 <button
-                    onClick={() => navigate(`/pokemon/${parseInt(id) - 1}`)}
+                    onClick={() => navigate(`/Pokedex/pokemon/${parseInt(id) - 1}`)}
                     disabled={pokemon.id === 1}
                     className="bg-[#C4C4C4] px-4 py-2 rounded duration-300 hover:bg-[#b4ff10] disabled:opacity-50"
                 >
                     Previous
                 </button>
                 <button
-                    onClick={() => navigate(`/pokemon/${parseInt(id) + 1}`)}
+                    onClick={() => navigate(`/Pokedex/pokemon/${parseInt(id) + 1}`)}
                     disabled={pokemon.id === 1010}
                     className="bg-[#C4C4C4] px-4 py-2 rounded duration-300 hover:bg-[#b4ff10] disabled:opacity-50"
                 >

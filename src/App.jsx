@@ -9,7 +9,7 @@ function App() {
       <h1 className="text-6xl font-bold text-center text-[#08ac94] my-4">Pokédex</h1>
         <Routes>
           <Route path="/Pokedex" element={<Home />} />
-          <Route path="/pokemon/:id" element={<PokemonDetail />} />
+          <Route path="/Pokedex/pokemon/:id" element={<PokemonDetail />} />
         </Routes>
     </div>
     </BrowserRouter>
