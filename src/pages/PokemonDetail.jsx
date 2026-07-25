@@ -37,7 +37,7 @@ export default function PokemonDetail() {
 
     return (
         <div className="max-w-2xl mx-auto border-2 border-[#08ac94] shadow-lg p-8 mt-10">
-            <button onClick={() => navigate('/')} className="mb-4 text-[#08ac94] duration-300 hover:text-[#b4ff10]">
+            <button onClick={() => navigate('/Pokedex')} className="mb-4 text-[#08ac94] duration-300 hover:text-[#b4ff10]">
                 X
             </button>
             <div className="flex flex-col md:flex-row gap-8 items-center">
