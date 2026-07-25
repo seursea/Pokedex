@@ -60,23 +60,19 @@ export default function Home() {
 
     useEffect(() => {
         const handleScroll = () => {
-            // Calculate if we have reached the bottom
             const windowHeight = window.innerHeight;
             const scrollDistance = document.documentElement.scrollTop;
             const totalPageHeight = document.documentElement.scrollHeight;
 
-            // If the user's screen + how far they scrolled equals the total page height
             if (windowHeight + scrollDistance + 1 >= totalPageHeight) {
                 setLimit(prev => prev + 10);
             }
         };
 
-        // Tell the browser to run handleScroll every time the user scrolls
         window.addEventListener('scroll', handleScroll);
 
-        // Cleanup function: Tell the browser to stop listening when we leave the page
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []); // Empty brackets mean this setup only runs once when the page loads
+    }, []); 
 
     return(
         <div className="max-w-6xl mx-auto">
