@@ -8,6 +8,7 @@ export default function Home() {
     const [searchTerm, setSearchTerm] = useState('');
     const [sortBy, setSortBy] = useState('id');
 
+    // 1. Fetching all Pokemon (Unchanged)
     useEffect(() => {
         const fetchAll = async () => {
             try {
@@ -51,11 +52,31 @@ export default function Home() {
                 const results = await Promise.all(promises);
                 setVisibleDetails(results);
             } catch (error) {
-                console.error("Sorry :( Failed to fectch the Pokemon list: ", error);
+                console.error("Sorry :( Failed to fetch the Pokemon details: ", error);
             }
         };
         fetchDetails();
     }, [allPokemon, searchTerm, sortBy, limit]);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            // Calculate if we have reached the bottom
+            const windowHeight = window.innerHeight;
+            const scrollDistance = document.documentElement.scrollTop;
+            const totalPageHeight = document.documentElement.scrollHeight;
+
+            // If the user's screen + how far they scrolled equals the total page height
+            if (windowHeight + scrollDistance + 1 >= totalPageHeight) {
+                setLimit(prev => prev + 10);
+            }
+        };
+
+        // Tell the browser to run handleScroll every time the user scrolls
+        window.addEventListener('scroll', handleScroll);
+
+        // Cleanup function: Tell the browser to stop listening when we leave the page
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []); // Empty brackets mean this setup only runs once when the page loads
 
     return(
         <div className="max-w-6xl mx-auto">
@@ -75,19 +96,10 @@ export default function Home() {
                 </select>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-10">
                 {visibleDetails.map(pokemon => (
                     <PokemonCard key={pokemon.id} pokemon={pokemon} />
                 ))}
-            </div>
-
-            <div className="flex justify-center mt-8">
-                <button
-                    onClick={() => setLimit(prev => prev + 10)}
-                    className="bg-blue-500 text-white px-6 py-2 rounded-full duration-300 hover:bg-blue-600 transition"
-                >
-                    Load More
-                </button>
             </div>
         </div>
     );
