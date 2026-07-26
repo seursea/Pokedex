@@ -8,7 +8,7 @@ export default function PokemonCard({ pokemon }) {
     console.log(pokemon)
     return (
         <Link to={`/Pokedex/pokemon/${pokemon.id}`}>
-            <div className="rounded border border-[#08ac94] shadow-md p-4 flex flex-col items-center hover:-translate-y-1 transition">
+            <div className="border border-[#08ac94] shadow-md p-4 flex flex-col items-center hover:-translate-y-1 transition">
                 <span className="text-[#F4FBFA] font-bold self-start">#{formattedId}</span>
                 <img src={imageUrl} alt={pokemon.name} className="w-32 h-32 object-contain" /> 
                 <h2 className="capitalize text-xl text-[#F4FBFA] font-bold mt-2">{pokemon.name}</h2>
