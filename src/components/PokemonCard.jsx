@@ -10,7 +10,13 @@ export default function PokemonCard({ pokemon }) {
         <Link to={`/Pokedex/pokemon/${pokemon.id}`}>
             <div className="border border-[#08ac94] shadow-md p-4 flex flex-col items-center hover:-translate-y-1 transition">
                 <span className="text-[#F4FBFA] font-bold self-start">#{formattedId}</span>
-                <img src={imageUrl} alt={pokemon.name} className="w-32 h-32 object-contain" /> 
+                <div className="w-32 h-32 flex items-center text-[#F4FBFA] justify-center">
+                    <img
+                        src={imageUrl}
+                        alt={pokemon.name}
+                        className="w-full h-full object-contain"
+                    />
+                    </div>
                 <h2 className="capitalize text-xl text-[#F4FBFA] font-bold mt-2">{pokemon.name}</h2>
                 <div className="flex gap-2 mt-2">
                     {pokemon.types.map(t => (
