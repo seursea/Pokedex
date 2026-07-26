@@ -16,7 +16,7 @@ export default function PokemonCard({ pokemon }) {
                         alt={pokemon.name}
                         className="w-full h-full object-contain"
                     />
-                    </div>
+                </div>
                 <h2 className="capitalize text-xl text-[#F4FBFA] font-bold mt-2">{pokemon.name}</h2>
                 <div className="flex gap-2 mt-2">
                     {pokemon.types.map(t => (
