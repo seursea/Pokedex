@@ -12,11 +12,6 @@ export default function PokemonDetail() {
         const fetchPokemon = async () => {
             try {
                 setError(false);
-
-                const numericId = parseInt(id, 10);
-                if (isNaN(numericId) || numericId < 1 || numericId > 1010) {
-                    throw new Error("Pokemon ID is out of range (1-1010 allowed)")
-                }
                 const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
                 // manual check for 404
@@ -33,23 +28,7 @@ export default function PokemonDetail() {
         fetchPokemon();
     }, [id]);
 
-    if (error) 
-        return (
-            <div className="max-w-md mx-auto border border-[#08ac94] shadow-lg p-8 mt-20 text-center">
-                <h1 className="text-3xl font-bold text-[#08ac94] mb-2">404</h1>
-                <h2 className="text-xl text-[#F4FBFA] font-semibold mb-3">
-                    Pokémon Not Found
-                </h2>
-                <p className="text-gray-400 mb-6 text-sm">
-                    This Pokémon doesn't exist or falls outside the Pokédex limit (1 - 1010).
-                </p>
-                <button
-                    onClick={() => navigate('/Pokedex')}
-                    className="bg-[#08ac94] text-[#242424] font-bold px-6 py-2 rounded duration-300 hover:bg-[#b4ff10]"
-                >
-                    Return to Pokédex
-                </button>
-            </div>);
+    if (error) return <div className="text-center mt-20 text-[#08ac94] font-bold">Pokemon Not Found</div>;
     if (!pokemon) return <div className="text-center text-[#08ac94] mt-20">Loading...</div>;
 
     const formattedId = formatId(pokemon.id);
